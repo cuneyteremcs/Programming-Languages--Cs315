@@ -1,0 +1,5 @@
+// Error! Road query should be a boolean expression.  
+// <"noOfStudents" + 3 > is not a boolean expression 
+// which is either true or false but it is an aritmetic expression. 
+
+cars ? ["type"== "track"]  <"weigthload" + 300 > ["name" == "Karanfil"];

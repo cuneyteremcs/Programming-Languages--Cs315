@@ -1,0 +1,9 @@
+// Every line must be followed by semi colon, but the second line is not followed.
+// Syntax error occurs.
+
+twowaystreet Bilkent {
+
+	a -- b -- c -- d;
+	road r = k -- c
+
+}

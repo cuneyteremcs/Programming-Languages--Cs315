@@ -1,0 +1,5 @@
+/* This code can be used for querying all
+paths which has starting and ending vertices with same name property
+and has a edge with dimension 8 between these vertices */
+
+graph3 ? [ "temporal" == $var ] < "count" == 30 > [ "temporal" == $var ]; 

@@ -1,0 +1,20 @@
+twowaystreet roads {
+	point a {
+		"city" = "Ankara";
+	}
+	point b {
+		"city" = ÒIstanbul";
+	}
+	point c {
+		"city" = "Sakarya";
+	}
+
+	point d;
+	d."city" = ÒIzmir";
+	road1 = a--b;
+	road2 = a--c;
+	road3 = b--d;
+	road1."hours" = 6;
+	road2."hours" = 3.5;
+	road3."hours" = 8.8;
+}

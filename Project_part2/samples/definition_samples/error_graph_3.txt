@@ -1,0 +1,22 @@
+//there is a syntax error.
+// Open curly brackets are supposed to be followed by the closed curly brackets 
+// according to the grammar of SQL. However, the point k open bracket is not closed.
+
+onewaystreet Network2 {
+
+	k -- l -- m ;
+
+	v -- y -- z ;
+
+	r1 = k -- v ;
+	r2 = m -- z ;
+
+	k = l -- v ;	
+
+	point k{
+
+		"name" = “Camlik” ;
+		“station” = “Gazprom” ;
+	
+}
+

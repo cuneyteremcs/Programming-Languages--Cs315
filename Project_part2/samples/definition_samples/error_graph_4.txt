@@ -1,0 +1,22 @@
+//This is the syntax error
+//Since all the properties are defined as a string according to the grammar of SQL,
+// there is an error which defined not as a string.
+
+
+onewayStreet Network {
+
+	a -- b -- c ;
+
+	c -- e ;
+
+	road1 = a -- b ;
+	road2 = b -- c ;
+
+    point  a{
+
+		name = “Eskisehir yolu” ;
+		“station” = “Yemekhane” ;
+             
+	 }
+
+}

@@ -1,0 +1,63 @@
+//Network Definition Outputs
+	//qraph_1
+	Successfully parsed
+
+	//graph_2
+	Successfully parsed
+
+	//graph_3
+	Successfully parsed
+
+	//graph_1 with Error
+	error at line 8: expected ';'
+	Parsing completed with 1 errors
+
+	//graph_2 with Error
+	error at line 8: expected ';'
+	Parsing completed with 1 errors
+
+	//graph_3 with Error
+	error at line 22: There is an unmatched brace
+	Parsing completed with 1 errors
+
+	//graph_4 with Error
+	error at line 17: String is expected as property name
+	Parsing completed with 1 errors
+
+
+
+//Query Outputs
+	//query_1
+	Successfully parsed
+
+	//query_2
+	Successfully parsed
+
+	//query_3
+	Successfully parsed
+
+	//query_4
+	Successfully parsed
+
+	//1uery_5
+	Successfully parsed
+
+	//query_1 with Error
+	error at line 2: Specify the graph name to query
+	Parsing completed with 1 errors
+	
+	//query_2 with Error
+	error at line 5: Boolean expression is expected for queries
+	Parsing completed with 1 errors
+	
+	//query_3 with Error
+	error at line 2: Use "?" to query a path
+	Parsing completed with 1 errors
+
+	//query_4 with Error
+	error at line 2: Property names should be in " "
+	Parsing completed with 1 errors
+
+	//query_5 with Error
+	error at line 3: Specify your query with "<>" or "[]"
+	Parsing completed with 1 errors

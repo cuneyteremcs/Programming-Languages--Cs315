@@ -1,0 +1,18 @@
+onewaystreet points{
+	point a, b, c; 
+	a."name" = “Bilkent Petrol”;
+	a.”type” = “gas”;
+	a.”sells” = “LPG”;
+
+
+	b."name" = “McDonals”;
+	b.”type” = “food”;	
+	b.”sells” = “burger”;
+	
+	c.”name" = “Real”;
+	c.”type” = “shop”;
+
+	(a -> b).”name” = “13th St.”;
+	(b -> c).”city” = “Ankara”;
+
+}

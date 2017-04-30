@@ -1,0 +1,8 @@
+x = 34;
+y = 46;
+graph3 ?  ["id" > x + y] < "type" == "blur" > [ sqrt("client") < y]; 
+
+/* This code can be used to query all paths where the start vertex
+property no which is greater than 8, first edge has a name which is
+starting with character ‘A’, and finally the second vertex has a vertex
+property client which has square-root smaller than 5 */

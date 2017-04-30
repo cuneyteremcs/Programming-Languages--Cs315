@@ -1,0 +1,3 @@
+//Error! Query operator is missing. There should be ? instead of !.
+roads ! ["name" == "Karanfil"] <"type"> = "government">;
+

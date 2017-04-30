@@ -1,0 +1,122 @@
+//SAMPLE:
+
+//one way street network
+    oneWayStreet villageNetwork1 {
+    
+   	 //Define points and street initial variables
+   	 point a;
+   	 point b;
+   	 point c;
+   	 street s1;
+   	 street s2;
+   	 street s3;
+   	 
+   	 point a {
+   		 ”name” = “Bilkent academy”
+   	 }
+   	 point b {
+   		 “name” = “John's home”
+   	 }
+   	 point c {
+   		 “name” = “NATO base”
+   	 }
+
+   	 street s1 {
+   		 “avgtime” = “60”
+   	 }
+   	 street s2 {
+   		 “avgtime” = “40”
+   	 }
+   	 street s3 {
+   		 “avgtime” = “40”
+   	 }
+   	 
+   	 
+   	 s1 = a->b;   					 // one way network organization
+   	 s2 = b->c;   					 //assign streets to the points
+   	 s3 = c->b;
+    }
+
+    //adding new properties and update current values
+    villageNetwork1 {
+    
+   	 a."Bilkent new academy"   	 //update current variable
+   	 a.”type” = “school”   		 //add new variable
+   	 a."paymentOption" = "cash"
+   	 a."paymentOption" = "Visa"
+   	 
+   	 b."type" = "house"
+   	 b."ownership" = "rent"
+
+   	 c."type" = "military station"
+   	 c."tax" = "unknown"
+   	 
+   	 s1."avgtime" = "40"
+   	 
+   	 s2."delay" = "20"
+   	 s2."delayinfo" = "this street is closed for 20 min."
+    }
+
+    //two way street network
+    twoWayStreet villageNetwork2 {
+
+   	 //Define points and street initial variables
+   	 point a;
+   	 point b;
+   	 point c;
+   	 street s1;
+   	 street s2;
+   	 
+   	 point a {
+   		 ”name” = “desert academy”
+   	 }
+   	 point b {
+   		 “name” = “L's brain center”
+   	 }
+   	 point c {
+   		 “name” = “Kira's dump”
+   	 }
+
+   	 street s1 {
+   		 “avgtime” = “20”
+   	 }
+   	 street s2 {
+   		 “avgtime” = “10”
+   	 }
+
+   	 s1 = a---b;   					 //two way network organization
+   	 s2 = b---c;   					 //assign streets to the points
+    }
+
+    //adding new properties and update current values
+    villageNetwork2 {
+    
+   	 a.”type” = “school”   		 //add new variable
+   	 a."paymentOption" = "cash only"
+   	 
+   	 b."type" = "brain station"
+
+   	 c."type" = "dumps' station"
+   	 c."tax" = "20"
+   	 c."taxinfo" = "20 dollars per month"
+   	 
+   	 s1."avgtime" = "30"
+   	 
+   	 s2."delay" = set1[10, 20]
+   	 s2."delayinfo" = "truck is stuck in the muddle"
+    }
+
+
+//Query
+
+$route = network >> [“name” = “Bilkent Building 81”] < “type”=’gas station’; sells = “Diesel” > [“type” ==”Shopping Mall”];
+$route = network >> [“name”[0] = “A”] < “avg_time” < sqrt(16)  > [“type” = “Shopping mall”];
+$route = network >> [“name” = “Bilkent Building 81”] <min_time = true> [“type” ==”Shopping Mall”];
+
+$route = network >> [“name” = “Bilkent Building 81”]<min_dist = true> [“type” ==”Shopping Mall”];
+
+$route = network >> [“name” = “Bilkent Building 81”]<simplest = true> [“type” ==”Shopping Mall”];
+
+$route = network >> [“name” = “Bilkent Building 81”]<limit_results = 3>[“type” ==”Shopping Mall”];
+$route = network >> [“name” = $point]<limit_results = 3>[“type” == $point];
+$query1 = $query2  ( $query3 || $query4 ) *

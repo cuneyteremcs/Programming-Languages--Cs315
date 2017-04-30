@@ -1,0 +1,5 @@
+/* This code can be used for querying all
+paths which has starting and ending points with same name property
+and has a road with width 30 between these points */
+
+graph3 ? [ "temporal" == $var ] < "width" == 30 > [ "temporal" == $var ]; 

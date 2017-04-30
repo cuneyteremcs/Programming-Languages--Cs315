@@ -1,0 +1,5 @@
+query1 = < "type" == "normal" >;
+query2 = < "type" == "extraordinary" >;
+query3 = query1 query13; 
+// same with query3 = < "type" == "normal" > [true] < "type" == "extraordinary" >;
+query4 ? query3;

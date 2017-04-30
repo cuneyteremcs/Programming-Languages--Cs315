@@ -1,0 +1,32 @@
+twowaystreet universities {
+	point a {
+	"name" = "Bilkent";
+	"city" = "Ankara"; 
+	}
+
+	point b {
+		"name" = "Metu";
+		"city" = "Ankara";
+	}
+	vertex c;
+
+	c."name" = "Bogazici";
+	c."city" = "Istanbul";
+
+	b."city" = "Izmir";
+
+	vertex d {
+		"name" = "Hacettepe";
+		"city" = "Izmir";
+	}
+
+	road1 = a -- b;
+	road2 = a -- c;
+	road3 = b -- c;
+	road4 = c -- d;
+	road1."roadDescription"  = set ["asphalt", "15km"];
+	road2."roadDescription" = set["no asphalt", "25km"];
+	road3."roadDescription" = set["traffic jam", "35km"];
+	road4."roadDescription" = set["no jam", "49km"];
+
+}

@@ -1,0 +1,8 @@
+x = 34;
+y = 46;
+graph3 ?  ["id" > x + y] < "type" == "blur" > [ sqrt("client") < y]; 
+
+/* This code can be used to query all ways where the start point
+property id which is greater than 80, first road has a name which is
+blur, and finally the second vertex has a vertex
+property client which has square-root smaller than 46 */

@@ -1,0 +1,200 @@
+Cuneyt EREM
+
+A) Arrays and copy semantics
+
+In both Python list and NumPy arrays, their lots of functialities are same,
+but for the " otherData = data[1:3] " part, [:] this operator works differently.
+In Python list, we create new array and even if we change the element, it does not
+change the original list because it will allocate new memory space, but in NumPy 
+arrays, it will change the original array, so it uses the same memory data. 
+
+B) Matrices
+
+NumPy two-dimensional arrays and matrices' " * " and " ** " operators works
+differently. For the NumPy two-dimensional, it just multiply the same element
+coordinates (for ex; a[1] multiply by b[1] or a[4] multiply by b[4]) but array
+matrices so the normal matrix operations (multiplication) So, first one is 
+called component element-wise, second one is multiplication of matrices.
+
+C) Reading from files
+
+Data.txt;
+
+[num_nodes]	  
+5	  	  
+[edges]	  
+0 -- 3	  
+0 -- 4	  
+1 -- 2	  
+1 -- 3	  
+2 -- 4	  
+3 -- 3
+
+c.py;
+
+
+import numpy as np
+global adjacent_list
+
+def adjacency_generator(file_name):
+    data_in_file = open(file_name, 'r')
+
+    data_in_file.readline()
+    num_nodes = int(data_in_file.readline())
+
+    line = data_in_file.readline()
+    while (not "edges" in line):
+        line = data_in_file.readline()
+
+    for line in data_in_file:
+        arr = [int(line) for line in line.split() if line.isdigit()]
+        #print (arr)
+        adjacent_list.append(arr)
+
+    #print (adjacent_list)
+    matrix_A = np.matrix([[0]* num_nodes] * num_nodes)
+
+        
+    for element in adjacent_list:
+        matrix_A[element[0], element[1]] = 1
+        matrix_A[element[1], element[0]] = 1
+
+    print (matrix_A)
+
+def num_paths(num_nodes, adjacent_list, m):
+    matrix_A = np.matrix([[0]* num_nodes] * num_nodes)
+    
+    #print (adjacent_list)
+    
+    for element in adjacent_list:
+        matrix_A[element[0], element[1]] = 1
+        matrix_A[element[1], element[0]] = 1
+    
+    orginal_mat = np.copy(matrix_A)
+    
+    
+    for i in range(0, m - 1):
+        matrix_A = np.dot(matrix_A, orginal_mat)
+  
+    
+    print(matrix_A)
+
+adjacent_list = []
+adjacency_generator('data.txt')
+num_paths(5, adjacent_list, 4)
+
+D) Going large-scale
+
+Using edges more efficiently, number of edges will decide which one we will use.
+For ex, adjancency list is more effient for the huge number of edges because it
+wont fill the empty locations with zeros (memory allocation), but adjencency 
+matrixes do, therefore it is more useful for the less nums of edges. NumPy and
+PyTables are also useful.
+
+E) Data structures warm-up
+e.py;
+
+
+import random
+import time
+ 
+class Account:
+    def __init__(self, id, name, balance):
+        self.id = id
+        self.name = name
+        self.balance = balance
+ 
+    def __str__(self):
+        return "[id:%d, name: %s, balance: %s]" % (self.id, self.name, self.balance)
+ 
+    def getId(self):
+        return self.id
+ 
+    def getName(self):
+        return self.name
+ 
+    def getBalance(self):
+        return self.balance
+ 
+    def withdraw(self, amount):
+        self.balance -= amount
+        return self.balance
+ 
+    def deposit(self, amount):
+        self.balance += amount
+        return self.balance
+ 
+def generateRandomAccounts(n):
+    accounts = []
+    nameLen = 5
+    balanceMax = 1000
+    alpha = 'abcdefghijklmnopqrstuvwxyz'
+    for id in xrange(1, n+1):
+        name = ""
+        for i in xrange(0, nameLen):
+            name += random.choice(alpha)
+        if id==1:
+            print "First account name is '%s'" % name
+        balance = random.choice(xrange(0, balanceMax))
+        account = Account(id, name, balance)    
+        accounts.append(account)
+
+    #print (accounts)
+    return accounts
+
+
+
+def findAccountIndices(name, accounts):
+    indices = []
+    for (index, account) in enumerate(accounts):
+        if account.getName() == name:
+            indices.append(index)
+    return indices
+
+def createNameMap(accounts):
+    dic = dict()  #hash o(1)
+
+    i = 0
+    for account in accounts:
+        if not (account.getName()) in dic:
+            dic[account.getName()] = [i]
+        else:
+            dic[account.getName()].append(i)
+        i = i + 1
+
+    return dic
+
+
+start = time.time()
+accounts = generateRandomAccounts(1000000)
+end = time.time()
+print "Accounts created in %f seconds" % (end-start)
+
+start = time.time()
+nameMap = createNameMap(accounts)
+end = time.time()
+print "Name map generated in %f seconds" % (end-start)
+
+while True:
+    name = raw_input("Account name: ")
+    if name == "":
+        print "Exiting..."
+        break
+    
+    start = time.time()
+    indices = nameMap.get(name, [])
+    end = time.time()
+    
+    if len(indices) > 0:
+        for index in indices:
+            print "> Account found: %s" % accounts[index]
+    else:
+        print "> No accounts found."
+    print "Search took %f seconds" % (end-start)
+
+
+
+
+
+
+

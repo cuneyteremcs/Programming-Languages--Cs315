@@ -1,0 +1,4 @@
+// error! ‘number’ cannot be processed as a property since there is no “” around.
+roads ? <"name" == 102> [number > 80];
+
+

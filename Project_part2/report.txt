@@ -1,0 +1,6 @@
+In the beginning we faced a lot of problems we didn't know how to start then
+we looked at Bugra Gedik's examples and got an understanding of what we have to do.
+Then we made a grammar but we realised that some features that we proposed in the first part are not comfrotable to implement so we decided to change them also we found ambiguity and tried to get rid of it.
+When we finished parser grammar we faced problems in connecting of scanner and parser we realised that we have to learn more how the makefile works, finally we
+divided definition and query parts into separate folders, first we tried to compile them together and then understood that it is not necessary.
+At the final points we got confused and started to think that our language has to perform some logic, however it was not necessary to our relief.

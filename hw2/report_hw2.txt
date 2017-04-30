@@ -1,0 +1,33 @@
+Report, Cüneyt EREM, hw2
+
+EagerClass;
+
+    def __call__(self, *numbers):
+        newNum = self.value
+        for num in numbers:
+            newNum = self.function(newNum, num)
+            num += 1
+        return EagerClass(self.function, newNum)
+
+    def __str__(self):
+        string = str(self.value)
+        return string
+    
+LazyClass;
+        
+    def __call__(self, *numbers):
+        for num in numbers:
+            self.value +=  num
+            num += 1
+        return LazyClass(self.function, self.value)
+    
+    def __str__(self):
+        newNum = self.function(0, self.value)
+        string = str(newNum)
+        return string
+
+In both Eager and Lazy classes, call function calculates by using self.function, 
+self.value and newNum in specifi locations. For example, for the eager class, 
+to test sleeperadd(), it will use self function during the updating newNum.
+But for the lazy class, it will be used after self.value updated and then, self.func
+is being used. 

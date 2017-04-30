@@ -1,0 +1,10 @@
+// There are two kind of networks in our syntax, so whenever it is used, the type
+//should be specified. But in this case, the type is not clear, so the error occurs.
+
+BilkentNetwork {
+
+           e1 -- e2 -- e3 -- e4 ;
+
+}
+
+

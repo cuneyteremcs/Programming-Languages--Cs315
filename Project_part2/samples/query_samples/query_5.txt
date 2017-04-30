@@ -1,0 +1,11 @@
+//Queries can be used also in the definitions of other queries with
+//concatenation, alternation and repetition.
+
+query1 = ["roadname"== "eskisehir"] < "width" == 300 > [ "type" == "blur"];
+query2 = ["type" == "private"];
+query3 = query1 || query2 ;
+query4 = < "carsontheroad" == 1 >;
+query5 = [ "roadname" == "karanfil" ];
+query6 = query4 query5;
+quer7 = query6 || query3;
+graph2 ? query7;

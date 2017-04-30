@@ -1,0 +1,5 @@
+// Error! Edge query should be a boolean expression.  
+// <"noOfStudents" + 3 > is not a boolean expression 
+// which is either true or false but it is an aritmetic expression. 
+
+schools ? ["name"== "Bilkent"]  <"noOfStudents" + 3 > ["name" == "Ege"];

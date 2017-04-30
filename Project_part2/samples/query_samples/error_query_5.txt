@@ -1,0 +1,4 @@
+//Error! There should be either [] or <> around 
+//the Boolean expressions to specify whether it is a point or road query.
+roads ? "city" == "ADANA" ["city" == "Ankara"] ;
+
